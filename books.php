@@ -64,13 +64,13 @@ catch (PDOException $e)
         <th>Жанр</th>
         <th>ISBN</th>
     </tr>
-	<?php foreach ( $array as $arr =>$item ) : ?>
+	<?php foreach ( $array as $arr => $item ) : ?>
 <tr>
-  <td><?= $item['name']?></td>
-  <td><?= $item['author']?></td>
-  <td><?= $item['year']?></td>
-  <td><?= $item['genre']?></td>
-  <td><?= $item['isbn']?></td>
+  <td><?= $item ['name'] ?></td>
+  <td><?= $item ['author'] ?></td>
+  <td><?= $item ['year'] ?></td>
+  <td><?= $item ['genre'] ?></td>
+  <td><?= $item ['isbn'] ?></td>
 </tr>
 	<?php endforeach; ?>
 	
