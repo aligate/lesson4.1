@@ -50,8 +50,7 @@ catch (PDOException $e) {
 </head>
 <body>
 <h1>Библиотека успешного человека</h1>
-
-<form method="GET">
+<form>
     <input type="text" name="isbn" placeholder="ISBN" value="<?= isset($request['isbn'])? $request['isbn']: null ; ?>" />
     <input type="text" name="name" placeholder="Название книги" value="<?= isset($request['name'])? $request['name']: null ; ?>" />
     <input type="text" name="author" placeholder="Автор книги" value="<?= isset($request['author'])? $request['author']: null ; ?>" />
@@ -68,13 +67,11 @@ catch (PDOException $e) {
     </tr>
 	<?php foreach ( $array as $arr =>$item ) : ?>
 <tr>
-
   <td><?= $item['name']?></td>
   <td><?= $item['author']?></td>
   <td><?= $item['year']?></td>
   <td><?= $item['genre']?></td>
   <td><?= $item['isbn']?></td>
-	
 </tr>
 	<?php endforeach; ?>
 	
