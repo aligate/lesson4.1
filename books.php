@@ -1,15 +1,15 @@
 <?php
-header("Content-Type: text/html; charset=utf-8");
-try{
+header ("Content-Type: text/html; charset=utf-8");
+try {
 	$pdo = new PDO('mysql:host=localhost;dbname=global', 'root', '');
 }
-catch (PDOException $e){
+catch (PDOException $e) {
 	
 	echo "Невозможно подключиться к Базе данных";
 }
 
-	$array=[];
-	if(strpos($_SERVER['REQUEST_URI'], '?') === false)
+	$array = [];
+	if( strpos( $_SERVER['REQUEST_URI'], '?') === false )
 	{
 		$query = "SELECT * FROM books";
 		$stmt = $pdo->query($query);
@@ -20,9 +20,10 @@ catch (PDOException $e){
 	{
 	$request = $_GET;
 	$query = "SELECT * FROM books WHERE name = :name OR isbn= :isbn OR author= :author";
-	$stmt = $pdo->prepare($query);
-	$stmt ->execute(['name'=>$request['name'], 'isbn'=>$request['isbn'], 'author'=>$request['author']]);
-	$array = $stmt->fetchAll();
+	$stmt = $pdo -> prepare ( $query );
+	$stmt -> execute ( ['name' => $request['name'], 'isbn' => $request['isbn'], 'author' => $request['author'] ] );
+	if( $stmt -> rowCount () === 0 ) header ('Location:'.$_SERVER['PHP_SELF']);
+	$array = $stmt -> fetchAll();
 	
 	}
 ?>
@@ -67,7 +68,7 @@ catch (PDOException $e){
         <th>Жанр</th>
         <th>ISBN</th>
     </tr>
-	<?php foreach($array as $arr =>$item):?>
+	<?php foreach ( $array as $arr =>$item ) : ?>
 <tr>
 
   <td><?= $item['name']?></td>
