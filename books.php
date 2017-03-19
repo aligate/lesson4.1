@@ -7,14 +7,12 @@ catch (PDOException $e) {
 	
 	echo "Невозможно подключиться к Базе данных";
 }
-
 	$array = [];
 	if( strpos( $_SERVER['REQUEST_URI'], '?') === false )
 	{
 		$query = "SELECT * FROM books";
 		$stmt = $pdo->query($query);
 		$array = $stmt->fetchAll();
-	
 	}
 	else
 	{
