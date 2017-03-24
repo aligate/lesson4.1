@@ -23,7 +23,7 @@ catch (PDOException $e){
 	$query = "SELECT * FROM books WHERE ";
 	foreach ($_GET as $key => $item)
 	{
-		if($item === '') continue;
+		if($_GET[$key] === '')  unset($_GET[$key]);
 		else 
 		{
 			$item = trim(addslashes($item));
