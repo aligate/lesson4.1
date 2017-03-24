@@ -33,9 +33,9 @@ catch (PDOException $e){
 	}
 	$query = substr($query, 0, -4);
 	
-	$stmt = $pdo->prepare($query);
-	$stmt ->execute($executeArray);
-	if($stmt->rowCount() ===0) header('Location:'.$_SERVER['PHP_SELF']);
+	$stmt = $pdo->prepare ( $query );
+	$stmt ->execute ( $executeArray );
+	if($stmt->rowCount () === 0) header('Location:'.$_SERVER['PHP_SELF']);
 	$array = $stmt->fetchAll();
 	}
 	
