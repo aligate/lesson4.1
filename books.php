@@ -19,20 +19,20 @@ catch (PDOException $e){
 	}
 	else
 	{
-	$exec = [];
+	$executeArray = [];
 	$query = "SELECT * FROM books WHERE ";
 	foreach($_GET as $key => $item){
 		if($item === '') continue;
 		else{
 			$item = trim(addslashes($item));
-			$exec[$key] = "%$item%";
+			$executeArray[$key] = "%$item%";
 			$query .= "$key LIKE :$key OR ";
 		}
 	}
 	$query = substr($query, 0, -4);
 	
 	$stmt = $pdo->prepare($query);
-	$stmt ->execute($exec);
+	$stmt ->execute($executeArray);
 	if($stmt->rowCount() ===0) header('Location:'.$_SERVER['PHP_SELF']);
 	$array = $stmt->fetchAll();
 	}
