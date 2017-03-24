@@ -28,7 +28,6 @@ catch (PDOException $e){
 			$item = trim(addslashes($item));
 			$exec[$key] = "%$item%";
 			$query .= "$key LIKE :$key OR ";
-			
 		}
 	}
 	$query = substr($query, 0, -4);
@@ -37,13 +36,9 @@ catch (PDOException $e){
 	$stmt ->execute($exec);
 	if($stmt->rowCount() ===0) header('Location:'.$_SERVER['PHP_SELF']);
 	$array = $stmt->fetchAll();
-	
 	}
 	
-	
-	
 ?>
-
 
 <!doctype html>
 <html>
