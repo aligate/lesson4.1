@@ -20,14 +20,20 @@ catch (PDOException $e){
 	}
 	else
 	{
-	$name = trim(addslashes($_GET['name']));
-	$isbn = trim(addslashes($_GET['isbn']));
-	$author = trim(addslashes($_GET['author']));
+	$exec = [];
+	$query = "SELECT * FROM books WHERE ";
+	foreach($_GET as $key => $item){
+		if(trim(addslashes($item)) == '') continue;
+		else{
+			$exec[$key] = "%$item%";
+			$query .= "$key LIKE :$key OR ";
+			
+		}
+	}
+	$query = substr($query, 0, -4);
 	
-	
-	$query = "SELECT * FROM books WHERE name LIKE :name OR isbn LIKE :isbn OR author LIKE :author";
 	$stmt = $pdo->prepare($query);
-	$stmt ->execute([ 'name'=> "%$name%", 'isbn'=> "%$isbn%", 'author'=> "%$author%" ]);
+	$stmt ->execute($exec);
 	if($stmt->rowCount() ===0) header('Location:'.$_SERVER['PHP_SELF']);
 	$array = $stmt->fetchAll();
 	
