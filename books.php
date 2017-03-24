@@ -21,13 +21,13 @@ catch (PDOException $e){
 	{
 	$executeArray = [];
 	$query = "SELECT * FROM books WHERE ";
-	foreach ($_GET as $key => $item)
+	foreach ( $_GET as $key => $item )
 	{
-		if($_GET[$key] === '')  unset($_GET[$key]);
+		if ( $_GET[$key] === '')  unset ( $_GET[$key] );
 		else 
 		{
-			$item = trim(addslashes($item));
-			$executeArray[$key] = "%$item%";
+			$item = trim ( addslashes($item) );
+			$executeArray [$key] = "%$item%";
 			$query .= "$key LIKE :$key OR ";
 		}
 	}
