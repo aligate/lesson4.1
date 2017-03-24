@@ -25,7 +25,7 @@ catch (PDOException $e){
 	$author = trim(addslashes($_GET['author']));
 	
 	
-	$query = "SELECT * FROM books WHERE name LIKE :name AND isbn LIKE :isbn AND author LIKE :author";
+	$query = "SELECT * FROM books WHERE name LIKE :name OR isbn LIKE :isbn OR author LIKE :author";
 	$stmt = $pdo->prepare($query);
 	$stmt ->execute([ 'name'=> "%$name%", 'isbn'=> "%$isbn%", 'author'=> "%$author%" ]);
 	if($stmt->rowCount() ===0) header('Location:'.$_SERVER['PHP_SELF']);
