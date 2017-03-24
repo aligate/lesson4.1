@@ -15,15 +15,14 @@ catch (PDOException $e){
 		$query = "SELECT * FROM books";
 		$stmt = $pdo->query($query);
 		$array = $stmt->fetchAll();
-		if($array) $request = [];
-	
+		
 	}
 	else
 	{
 	$exec = [];
 	$query = "SELECT * FROM books WHERE ";
 	foreach($_GET as $key => $item){
-		if(trim(addslashes($item)) == '') continue;
+		if($item === '') continue;
 		else{
 			$item = trim(addslashes($item));
 			$exec[$key] = "%$item%";
