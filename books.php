@@ -21,9 +21,11 @@ catch (PDOException $e){
 	{
 	$executeArray = [];
 	$query = "SELECT * FROM books WHERE ";
-	foreach($_GET as $key => $item){
+	foreach ($_GET as $key => $item)
+	{
 		if($item === '') continue;
-		else{
+		else 
+		{
 			$item = trim(addslashes($item));
 			$executeArray[$key] = "%$item%";
 			$query .= "$key LIKE :$key OR ";
