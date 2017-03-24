@@ -25,6 +25,7 @@ catch (PDOException $e){
 	foreach($_GET as $key => $item){
 		if(trim(addslashes($item)) == '') continue;
 		else{
+			$item = trim(addslashes($item));
 			$exec[$key] = "%$item%";
 			$query .= "$key LIKE :$key OR ";
 			
