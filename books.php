@@ -67,8 +67,8 @@ catch (PDOException $e){
 
 <form method="GET">
     <input type="text" name="isbn" placeholder="ISBN" value="<?= isset($_GET['isbn']) ? $_GET['isbn']: null; ?>" />
-    <input type="text" name="name" placeholder="Название книги" value="<?= isset($_GET['isbn']) ? $_GET['isbn']: null; ?>" />
-    <input type="text" name="author" placeholder="Автор книги" value="<?= isset($_GET['isbn']) ? $_GET['isbn']: null; ?>" />
+    <input type="text" name="name" placeholder="Название книги" value="<?= isset($_GET['name']) ? $_GET['name']: null; ?>" />
+    <input type="text" name="author" placeholder="Автор книги" value="<?= isset($_GET['author']) ? $_GET['author']: null; ?>" />
     <input type="submit" value="Поиск" />
 </form>
 
