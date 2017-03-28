@@ -8,7 +8,7 @@ catch (PDOException $e){
 	echo "Невозможно подключиться к Базе данных";
 }
 	
-	$array=[];
+	$array = [];
 	if(empty( $_GET ))
 	{
 		
