@@ -9,7 +9,7 @@ catch (PDOException $e){
 }
 	
 	$array=[];
-	if(strpos($_SERVER['REQUEST_URI'], '?') === false)
+	if(empty( $_GET ))
 	{
 		
 		$query = "SELECT * FROM books";
